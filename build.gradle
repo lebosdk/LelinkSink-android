@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 29
+    buildToolsVersion '28.0.3'
+
+    signingConfigs {
+        config {
+            keyAlias 'happycast'
+            keyPassword '12345678'
+            storeFile file('./happycast.jks')
+            storePassword '12345678'
+        }
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+    }
+    defaultConfig {
+        applicationId "com.hpplay.sdk.sink.test"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 10000
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a"  // 乐播投屏SDK目前只提供armeabi-v7a架构的so，如果需要其他架构的so，请跟我们的商务人员联系
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.config
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs', "../demo/libs","../sdk-vod/libs"
+        }
+    }
+
+//    packagingOptions {
+//        doNotStrip "*/*/*.so"
+//    }
+//
+//    lintOptions {
+//        checkReleaseBuilds false
+//        abortOnError false
+//    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions "channel"
+    productFlavors {
+
+        lecast {
+            // SDK 公版渠道
+            dimension "channel"
+        }
+        leboapk {
+            // 乐播投屏APP打包渠道
+            dimension "channel"
+        }
+        happytest { // '14'
+            dimension "channel"
+        }
+        develop {// 此渠道专用于 开发环境 域名分配
+            dimension "channel"
+        }
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api(name: 'lelink', ext: 'aar')
+    implementation 'com.android.support:support-v4:27.0.0'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    // 内存泄漏
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+
+//    api project(':sdk-sink')
+}
+
+
+def buildTime() {
+    return new Date().format("yyyyMMdd-HHmmss", TimeZone.getTimeZone("GMT+08:00"))
+}

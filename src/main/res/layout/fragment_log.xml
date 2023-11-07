@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取日志方式1:"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/upload_log_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:focusable="true"
+            android:nextFocusLeft="@id/upload_log_btn"
+            android:nextFocusRight="@id/upload_log_btn"
+            android:nextFocusUp="@id/upload_log_btn"
+            android:nextFocusDown="@id/upload_log_btn"
+            android:text="上传日志到服务器"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取日志方式2:"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/browse_log_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

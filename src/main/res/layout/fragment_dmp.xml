@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/browse_layout_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#222328"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:orientation="horizontal"
+            android:paddingLeft="74dp"
+            android:paddingRight="74dp"
+            android:paddingTop="34dp">
+
+            <LinearLayout
+                android:id="@+id/dmp_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="37dp"
+                    android:layout_height="37dp"
+                    android:src="@drawable/back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DMP设备"
+                    android:textColor="#E6E5EA"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/dmp_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/refresh_selector"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:id="@+id/refresh_iv"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:src="@drawable/refresh" />
+
+                <ProgressBar
+                    android:id="@+id/refresh_progress"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_centerInParent="true"
+                    android:indeterminateBehavior="repeat"
+                    android:indeterminateDrawable="@anim/loading"
+                    android:indeterminateDuration="500"
+                    android:indeterminateOnly="true"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="刷新"
+                    android:textColor="#E6E5EA"
+                    android:textSize="21sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/device_list_rc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingBottom="20dp"
+                android:paddingLeft="74dp"
+                android:paddingRight="74dp"
+                android:paddingTop="30dp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/file_list_rc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingBottom="20dp"
+                android:paddingLeft="74dp"
+                android:paddingRight="74dp"
+                android:paddingTop="30dp"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/video_paly_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#575757"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <VideoView
+                android:id="@+id/video_play_vv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/music_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#575757"
+                android:src="@drawable/music_f"
+                android:scaleType="center"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/photo_play_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+</FrameLayout>
